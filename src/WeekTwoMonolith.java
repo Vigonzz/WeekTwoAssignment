@@ -36,8 +36,27 @@ public class WeekTwoMonolith {
         String[] splitStop = stop.split(",");
 
 
+        // Bract check : Will need to be deleted for final output:
+        int lastIndex = splitStop.length - 1;
+        String lastStop = splitStop[lastIndex];
+        System.out.println(lastStop);
+        System.out.println(lastStop.length());
 
-        //
+        // Fill the stopWords list
+
+        // Copies words from splitStop into stopWords
+        for (int i = 0; i < splitStop.length; i++) {
+            stopWords.add(splitStop[i]);
+        }
+
+        // Add now a-z into the stopWords
+        for (char letter = 'a'; letter <= 'z'; letter++) {
+            stopWords.add(String.valueOf(letter));
+        }
+
+        System.out.println(splitStop.length);
+        System.out.println(stopWords.size());
+
 
     }
 
