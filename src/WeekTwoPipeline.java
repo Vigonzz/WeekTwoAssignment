@@ -83,10 +83,36 @@ public class WeekTwoPipeline {
     // frequencies which will match the words and the counts together
     static Map<String, Integer> frequencies (List<String> wordList) {
         /*
-         * Quick notation - I will be using LinkedHashmap to try and match pythons
+         * Quick notation - I will be using LinkedHashMap to try and match Python's
          * dicts insertion order. LinkedHashmap keeps that true to her code, as opposed to
          * a just hashmap which holds no order
          */
+        Map<String, Integer> frequentWords = new LinkedHashMap<>();
+
+        for (int i = 0; i < wordList.size(); i++) {
+            String currentWord = wordList.get(i);
+            if (frequentWords.containsKey(currentWord)) {
+                frequentWords.put(currentWord, frequentWords.get(currentWord) + 1);
+            } else {
+                frequentWords.put(currentWord, 1);
+            }
+        }
+        return frequentWords;
+    }
+
+    // Sort through the words and frequencies
+    static List<Map.Entry<String, Integer>> sort(Map<String, Integer> wordFrequencies) {
+        List<Map.Entry<String,Integer>> entries = new ArrayList<>(wordFrequencies.entrySet());
+        entries.sort((a,b) -> Integer.compare(b.getValue(), a.getValue()));
+        return entries;
+    }
+
+    // Printing our list as recursive
+    static void printRecursive(List<Map.Entry<String, Integer>> wordFreq) {
+        if (wordFreq.size() > 0) {
+            System.out.println(wordFreq.get(0).getKey() + "  " + "-" + "  " + wordFreq.get(0).getValue());
+            printRecursive(wordFreq.subList(1, wordFreq.size()));
+        }
     }
 
     public static void main(String[] args) throws IOException {
@@ -97,6 +123,8 @@ public class WeekTwoPipeline {
 
             return;
         }
+
+        printRecursive(sort(frequencies(removeStopWords(scan(filterCharAndClean(readFile(args[0])))))).subList(0,25));
     }
 }
 
