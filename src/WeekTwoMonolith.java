@@ -98,6 +98,7 @@ public class WeekTwoMonolith {
                                 words.add(bookWord);
                                 counts.add(1);
                             } else {
+                                // A loop to resort
                                 for (int n = position - 1; n >= 0; n--) {
                                     if (counts.get(position) > counts.get(n)) {
                                         // words swap
