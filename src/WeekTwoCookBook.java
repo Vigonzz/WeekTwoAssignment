@@ -21,8 +21,21 @@ public class WeekTwoCookBook {
         }
     }
 
+    // Filter through the characters and get them prepared for splitting
+    static void filterAndCleanChar() {
+        for (int i = 0; i < data.size(); i++) {
+            if (!Character.isLetterOrDigit(data.get(i))) {
+                data.set(i, ' ');
+            } else {
+                data.set(i, Character.toLowerCase(data.get(i)));
+            }
+        }
+    }
+
+
+
     public static void main (String[] args) throws IOException {
         readFile(args[0]);
-
+        filterAndCleanChar();
     }
 }
