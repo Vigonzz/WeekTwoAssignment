@@ -19,6 +19,14 @@ import java.util.List;
 public class WeekTwoMonolith {
     public static void main (String[] args) throws IOException {
 
+        // Verify if a file was given lets, provide feedback for wrong input and then exits the program
+        if (args.length == 0) {
+            System.err.println("Needed: java WeekTwoMonolith.java ../pride-and-prejudice.txt");
+            System.err.println("Unable to proceed");
+
+            return;
+        }
+
         // An empty ArrayList that will be collecting the actual words
         ArrayList<String> words = new ArrayList<>();
 
@@ -85,7 +93,7 @@ public class WeekTwoMonolith {
                                 }
                             }
 
-                            // if I didnt find the word
+                            // if I didn't find the word
                             if (! found) {
                                 words.add(bookWord);
                                 counts.add(1);
