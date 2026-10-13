@@ -1,3 +1,15 @@
+/*
+ * Violet Gonzalez, October 11, 2026
+ * Week Two Assignment - Specifically the Monolith style
+ * Professor Cristina Videira Lopes
+ */
+
+/*
+ * The task of this program is to follow the Term Frequency program using the CookBook style.
+ * this is part 2 of a three part assignment.
+ */
+
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -84,24 +96,71 @@ public class WeekTwoCookBook {
 
         // A loop to resort backwards
         for (int n = stopPositions.size() - 1; n >= 0; n--) {
-            int store = n;
+            int store = stopPositions.get(n);
             words.remove(store);
         }
+    }
 
+    // Frequencies
+    static void frequencies() {
 
-            System.out.println(stopWords.size());
+        for (int i = 0; i < words.size(); i++) {
+            String currentWord = words.get(i);
+            int position = freqWords.indexOf(currentWord);
+
+            if (position != - 1) {
+                freqCounts.set(position, freqCounts.get(position) + 1);
+            } else {
+                freqWords.add(currentWord);
+                freqCounts.add(1);
+            }
+        }
+    }
+
+    // The positions in our program
+    static void sort() {
+        ArrayList<Integer> order = new ArrayList<>();
+
+        for (int i = 0; i < freqWords.size(); i++) {
+            order.add(i);
+        }
+        order.sort((a,b) -> Integer.compare(freqCounts.get(b), freqCounts.get(a)));
+
+        // Rebuilding the list in a sorted order
+
+        List<String> sortedWords = new ArrayList<>();
+        List<Integer> sortedCounts = new ArrayList<>();
+
+        for (int i = 0; i < order.size(); i++) {
+            int ticket = order.get(i);
+            sortedWords.add(freqWords.get(ticket));
+            sortedCounts.add(freqCounts.get(ticket));
+        }
+
+        freqWords = sortedWords;
+        freqCounts = sortedCounts;
 
     }
 
 
     public static void main (String[] args) throws IOException {
+
+        // Error handling:
+        if (args.length == 0) {
+            System.err.println("Needed: java WeekTwoCookBook.java ../pride-and-prejudice.txt");
+            System.err.println("Unable to proceed");
+
+            return;
+        }
         readFile(args[0]);
         filterAndCleanChar();
         scan();
         removeStopWords();
+        frequencies();
+        sort();
 
-        for (int check = 0; check < 5; check++) {
-            System.out.println(words.get(check));
+        for (int check = 0; check < 25; check++) {
+            System.out.println(freqWords.get(check) + "  " + "-" + "  " + freqCounts.get(check));
         }
 
     }
