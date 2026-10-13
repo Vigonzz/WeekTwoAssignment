@@ -1,0 +1,42 @@
+The program WeekTwoAssignment peruses through the book Pride and Prejudice
+provided through GitHub specifically from Professor: Cristina Videira Lopes. From
+scanning the book, this program provided the top 25 most used words while implementing
+the term frequency program without following a direct style!
+
+There are three different styles practiced in this program:
+- Monolith
+- CookBook
+- PipeLine
+
+Each follow the same steps with a slight variation in step three, which will
+be discussed in more detail.
+
+
+To Run the program:
+
+ 1. Ensure you have Java version 11 or later and
+ correctly pathed in your computer's environment.
+
+ 2. Have the files stop_words.txt and pride-and-prejudice.txt specifically in the WeekTwoAssignment folder. It
+ should be one level above the source folder. Without these files in the correct location the program cannot
+ run correctly.
+
+ 3. Open your terminal and change directories: cd path/to/WeekTwoAssignment/src
+ to enter the program's source folder. You should be able to now identify the file (with the style)
+ you would like to open.
+
+ Then enter the following:
+ For Monolith:
+ java WeekTwoMonolith.java ../pride-and-prejudice.txt
+
+ For CookBook:
+ java WeekTwoCookBook.java ../pride-and-prejudice.txt
+
+ For PipeLine:
+ java WeekTwoPipeline.java ../pride-and-prejudice.txt
+
+ 4. Look at the quirky styles, Popular list of words and their count from the book!
+
+
+This program was created with the help of AI conversation mode from Claude:
+https://claude.ai/share/9f98c660-c031-402a-a297-020bb376c93a
