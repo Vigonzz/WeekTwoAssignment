@@ -77,14 +77,18 @@ public class WeekTwoMonolith {
                         startPosition = j;
                     }
                 } else {
+                    // Check to see if the char is actually a char and not a word
                     if (! Character.isLetterOrDigit(characterWalk)) {
                         String bookWord = line.substring(startPosition, j).toLowerCase();
+                        // If not a letter or digit take it our and lowercase it
                         if (! stopWords.contains(bookWord)) {
                             boolean found = false;
                             int position = -1;
 
+                            // Finding specific words to update the  count
                             for (int k = 0; k < words.size(); k++) {
                                 boolean positionMatch = words.get(k).equals(bookWord);
+                                // if matched looks at counts and increase that value by 1
                                 if (positionMatch) {
                                     counts.set(k, counts.get(k) + 1);
                                     found = true;
