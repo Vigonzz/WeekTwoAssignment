@@ -1,6 +1,6 @@
 /*
- * Violet Gonzalez, October 11, 2026
- * Week Two Assignment - Specifically the Monolith style
+ * Violet Gonzalez, October 12, 2026
+ * Week Two Assignment - Specifically the CookBook style
  * Professor Cristina Videira Lopes
  */
 
@@ -101,7 +101,7 @@ public class WeekTwoCookBook {
         }
     }
 
-    // Frequencies
+    // Frequencies - matches the words with the counts
     static void frequencies() {
 
         for (int i = 0; i < words.size(); i++) {
